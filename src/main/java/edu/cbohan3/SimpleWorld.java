@@ -3,9 +3,9 @@ package edu.cbohan3;
 import burlap.mdp.auxiliary.DomainGenerator;
 import burlap.mdp.core.TerminalFunction;
 import burlap.mdp.core.action.UniversalActionType;
-import burlap.mdp.singleagent.SADomain;
 import burlap.mdp.singleagent.model.FactoredModel;
 import burlap.mdp.singleagent.model.RewardFunction;
+import burlap.mdp.singleagent.oo.OOSADomain;
 import burlap.visualizer.StateRenderLayer;
 import burlap.visualizer.Visualizer;
 
@@ -21,6 +21,8 @@ public class SimpleWorld implements DomainGenerator {
 	public static final String ACTION_SOUTH = "south";
 	public static final String ACTION_EAST = "east";
 	public static final String ACTION_WEST = "west";
+	
+	public static final String CLASS_AGENT = "agent";
 	
 	public static final int K1 = 1001; //Key 1
 	public static final int K2 = 1002; //Key 2
@@ -53,21 +55,29 @@ public class SimpleWorld implements DomainGenerator {
 	public int goalY = 1;
 	public int startX = 1;
 	public int startY = 16;
+	public int key1X = 8;
+	public int key1Y = 9;
+	public int key2X = 8;
+	public int key2Y = 16;
+	
 
-	public SADomain generateDomain() {
-		SADomain domain = new SADomain();
+	public OOSADomain generateDomain() {
+		OOSADomain domain = new OOSADomain();
+		
+		domain.addStateClass(CLASS_AGENT, SimpleWorldState.class);
+		
+		SimpleWorldStateModel sModel = new SimpleWorldStateModel();
+		RewardFunction rf = new SimpleWorldRewardFunction(this.goalX, this.goalY);
+		TerminalFunction tf = new SimpleWorldTerminalFunction(this.goalX, this.goalY);
+		
+		FactoredModel model = new FactoredModel(sModel, rf, tf);
+		domain.setModel(model);
 		
 		domain.addActionTypes(
 				new UniversalActionType(ACTION_NORTH),
 				new UniversalActionType(ACTION_EAST),
 				new UniversalActionType(ACTION_SOUTH),
 				new UniversalActionType(ACTION_WEST));
-		
-		SimpleWorldStateModel sModel = new SimpleWorldStateModel();
-		RewardFunction rf = new SimpleWorldRewardFunction(this.goalX, this.goalY);
-		TerminalFunction tf = new SimpleWorldTerminalFunction(this.goalX, this.goalY);
-		
-		domain.setModel(new FactoredModel(sModel, rf, tf));
 		
 		return domain;
 	}

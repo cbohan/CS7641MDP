@@ -3,17 +3,19 @@ package edu.cbohan3;
 import java.util.Arrays;
 import java.util.List;
 
+import burlap.mdp.core.oo.state.ObjectInstance;
 import burlap.mdp.core.state.MutableState;
 import burlap.mdp.core.state.StateUtilities;
 import burlap.mdp.core.state.UnknownKeyException;
 
-public class SimpleWorldState implements MutableState {
+public class SimpleWorldState implements MutableState, ObjectInstance {
 	
 	public int x, y;
 	public int key1InInventory, key2InInventory;
 	public int door1Open, door2Open;
+	public String name;
 	
-	private final List<Object> keys = Arrays.<Object>asList(SimpleWorld.VAR_X, SimpleWorld.VAR_Y);
+	private final List<Object> keys = Arrays.<Object>asList(SimpleWorld.VAR_X, SimpleWorld.VAR_Y, SimpleWorld.VAR_KEY1_IN_INVENTORY, SimpleWorld.VAR_KEY2_IN_INVENTORY, SimpleWorld.VAR_DOOR1_OPEN, SimpleWorld.VAR_DOOR2_OPEN);
 	
 	public SimpleWorldState() {}
 	public SimpleWorldState(int x, int y, int key1InInventory, int key2InInventory, int door1Open, int door2Open) {
@@ -23,6 +25,7 @@ public class SimpleWorldState implements MutableState {
 		this.key2InInventory = key2InInventory;
 		this.door1Open = door1Open;
 		this.door2Open = door2Open;
+		name = "agent";
 	}
 
 	public SimpleWorldState copy() {
@@ -65,5 +68,17 @@ public class SimpleWorldState implements MutableState {
 	
 	public String toString() {
 		return StateUtilities.stateToString(this);
+	}
+	public String className() {
+		return SimpleWorld.CLASS_AGENT;
+	}
+	public ObjectInstance copyWithName(String objectName) {
+		SimpleWorldState state = this.copy();
+		state.name = objectName;
+		return state;
+	}
+	public String name() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

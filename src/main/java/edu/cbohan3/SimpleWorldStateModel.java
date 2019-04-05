@@ -46,8 +46,8 @@ public class SimpleWorldStateModel implements FullStateModel {
 		else if (direction == 3)
 			nextX--;
 		
-		System.out.println("X: " + curX + ", Y: " + curY + ", Key1: " + key1InInventory + ", Key2: " + key2InInventory + ", Door1: " + door1Open + ", Door2: " + door2Open);
-		System.out.println(hasKey(key1InInventory, key2InInventory));
+		//System.out.println("X: " + curX + ", Y: " + curY + ", Key1: " + key1InInventory + ", Key2: " + key2InInventory + ", Door1: " + door1Open + ", Door2: " + door2Open);
+		//System.out.println(hasKey(key1InInventory, key2InInventory));
 		
 		//Walk into wall.
 		if (SimpleWorld.map[nextY][nextX] == 1) 
