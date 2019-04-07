@@ -10,12 +10,14 @@ import burlap.mdp.singleagent.model.statemodel.FullStateModel;
 
 public class SimpleWorldStateModel implements FullStateModel {
 	protected double [][] transitionProbs;
+	protected double successChance;
 	
-	public SimpleWorldStateModel() {
+	public SimpleWorldStateModel(double successChance) {
+		this.successChance = successChance;
 		this.transitionProbs = new double[4][4];
 		for (int i = 0; i < 4; i++)
 			for (int j = 0; j < 4; j++)
-				this.transitionProbs[i][j] = (i == j) ? 1 : 0; //Fully deterministic world.
+				this.transitionProbs[i][j] = (i == j) ? successChance : ((1. - successChance) / 3.); 
 	} 
 	
 	protected int actionDir(Action a) {
@@ -96,8 +98,6 @@ public class SimpleWorldStateModel implements FullStateModel {
 		
 		int adir = actionDir(a);
 		
-		//At least initially, I'm not using probabilistic movement so this is not needed. But it's better
-		//to need it and not have it than to have it and not need it.
 		double r = Math.random();
 		double sumProb = 0.;
 		int dir	= 0;

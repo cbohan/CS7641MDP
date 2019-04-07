@@ -10,6 +10,8 @@ import burlap.visualizer.StateRenderLayer;
 import burlap.visualizer.Visualizer;
 
 public class SimpleWorld implements DomainGenerator {
+	public static final double SUCCESS_CHANCE = .5;
+	
 	public static final String VAR_X = "x";
 	public static final String VAR_Y = "y";
 	public static final String VAR_KEY1_IN_INVENTORY = "key1InInventory";
@@ -51,14 +53,14 @@ public class SimpleWorld implements DomainGenerator {
 		{XX,XX,XX,XX,XX,XX,XX,XX,XX,XX,XX,XX,XX,XX,XX},
 	};
 	
-	public int goalX = 13;
-	public int goalY = 1;
-	public int startX = 1;
-	public int startY = 16;
-	public int key1X = 8;
-	public int key1Y = 9;
-	public int key2X = 8;
-	public int key2Y = 16;
+	static int goalX = 13;
+	static int goalY = 1;
+	static int startX = 1;
+	static int startY = 16;
+	static int key1X = 8;
+	static int key1Y = 9;
+	static int key2X = 8;
+	static int key2Y = 16;
 	
 
 	public OOSADomain generateDomain() {
@@ -66,9 +68,9 @@ public class SimpleWorld implements DomainGenerator {
 		
 		domain.addStateClass(CLASS_AGENT, SimpleWorldState.class);
 		
-		SimpleWorldStateModel sModel = new SimpleWorldStateModel();
-		RewardFunction rf = new SimpleWorldRewardFunction(this.goalX, this.goalY);
-		TerminalFunction tf = new SimpleWorldTerminalFunction(this.goalX, this.goalY);
+		SimpleWorldStateModel sModel = new SimpleWorldStateModel(SUCCESS_CHANCE);
+		RewardFunction rf = new SimpleWorldRewardFunction(SimpleWorld.goalX, SimpleWorld.goalY);
+		TerminalFunction tf = new SimpleWorldTerminalFunction(SimpleWorld.goalX, SimpleWorld.goalY);
 		
 		FactoredModel model = new FactoredModel(sModel, rf, tf);
 		domain.setModel(model);
@@ -83,8 +85,8 @@ public class SimpleWorld implements DomainGenerator {
 	}
 	
 	public void setGoalLocation(int goalX, int goalY) {
-		this.goalX = goalX;
-		this.goalY = goalY;
+		SimpleWorld.goalX = goalX;
+		SimpleWorld.goalY = goalY;
 	}
 	
 	public StateRenderLayer getStateRenderLayer() {

@@ -15,13 +15,14 @@ public class Main {
 		SimpleWorldBehavior behavior = new SimpleWorldBehavior();
 		String outputPath = "output/";
 		
-		VisualActionObserver observer = new VisualActionObserver(behavior.simpleWorld.getVisualizer());
+		/*VisualActionObserver observer = new VisualActionObserver(behavior.simpleWorld.getVisualizer());
 		observer.initGUI();
-		behavior.env.addObservers(observer);
+		behavior.env.addObservers(observer);*/
 		
 		//behavior.doBFS(outputPath);
 		//behavior.doAStar(outputPath);
 		behavior.doValueIteration(outputPath);
+		//behavior.doPolicyIteration(outputPath);
 		behavior.visualize(outputPath);
 		
 	}

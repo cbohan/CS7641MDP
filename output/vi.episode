@@ -1,77 +1,170 @@
 !!burlap.behavior.singleagent.Episode
 actionSequence:
 - &id001 !!burlap.mdp.core.action.SimpleAction {name: east}
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
 - &id002 !!burlap.mdp.core.action.SimpleAction {name: north}
-- *id001
-- *id001
-- *id002
-- *id001
-- *id001
-- *id002
-- *id001
-- *id001
-- *id001
-- *id001
-- *id001
-- *id001
-- *id001
 - *id002
 - *id002
-- &id003 !!burlap.mdp.core.action.SimpleAction {name: west}
-- *id003
 - *id002
+- *id002
+- *id002
+- *id002
+- *id001
+- *id001
+- *id001
+- &id003 !!burlap.mdp.core.action.SimpleAction {name: south}
 - *id003
 - *id003
-- *id002
+- *id003
 - *id003
 - *id001
-- &id004 !!burlap.mdp.core.action.SimpleAction {name: south}
+- *id002
 - *id001
 - *id001
-- *id004
 - *id001
 - *id001
+- *id001
+- *id001
+- *id001
+- *id002
+- *id002
+- &id004 !!burlap.mdp.core.action.SimpleAction {name: west}
+- *id002
 - *id004
 - *id004
 - *id004
 - *id004
 - *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
 - *id003
 - *id003
 - *id003
 - *id003
 - *id003
+- *id003
+- *id003
+- *id003
+- *id003
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id003
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id003
+- *id003
+- *id003
+- *id004
+- *id003
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id002
+- *id002
+- *id002
+- *id002
+- *id002
+- *id002
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id004
+- *id002
+- *id002
+- *id002
+- *id002
+- *id002
+- *id002
+- *id002
+- *id002
+- *id004
+- *id004
+- *id004
+- *id002
+- *id004
+- *id002
+- *id002
+- *id002
+- *id004
+- *id002
+- *id002
+- *id002
+- *id002
+- *id002
+- *id004
+- *id002
 - *id002
 - *id001
 - *id001
 - *id001
 - *id001
 - *id001
-- *id002
-- *id002
-- *id003
-- *id003
-- *id003
-- *id003
-- *id003
-- *id003
-- *id003
-- *id002
-- *id002
-- *id003
-- *id003
-- *id003
-- *id002
-- *id002
-- *id002
-- *id002
 - *id001
 - *id002
 - *id001
 - *id001
+- *id001
+- *id002
+- *id001
 - *id002
 - *id002
 - *id001
+- *id002
 - *id001
 - *id002
 - *id002
@@ -80,6 +173,30 @@ actionSequence:
 - *id001
 - *id001
 - *id001
+- *id002
+- *id002
+- *id002
+- *id002
+- *id001
+- *id002
+- *id002
+- *id002
+- *id002
+- *id002
+- *id002
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id002
+- *id001
+- *id002
+- *id002
+- *id002
+- *id001
+- *id002
 - *id001
 rewardSequence: [-0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01,
   -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01,
@@ -87,12 +204,24 @@ rewardSequence: [-0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, 
   -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01,
   -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01,
   -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01,
-  -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, 1.0]
+  -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01,
+  -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01,
+  -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01,
+  -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01,
+  -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01,
+  -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01,
+  -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01,
+  -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01,
+  -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01,
+  -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01,
+  -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, 1.0]
 stateSequence:
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
   key2InInventory: 0, name: agent, x: 1, y: 16}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
-  key2InInventory: 0, name: agent, x: 2, y: 16}
+  key2InInventory: 0, name: agent, x: 1, y: 16}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 1, y: 15}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
   key2InInventory: 0, name: agent, x: 2, y: 15}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
@@ -100,9 +229,39 @@ stateSequence:
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
   key2InInventory: 0, name: agent, x: 4, y: 15}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
-  key2InInventory: 0, name: agent, x: 4, y: 14}
+  key2InInventory: 0, name: agent, x: 4, y: 16}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 5, y: 16}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 5, y: 15}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 6, y: 15}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 6, y: 15}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 5, y: 15}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 6, y: 15}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 5, y: 15}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
   key2InInventory: 0, name: agent, x: 5, y: 14}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 5, y: 13}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 5, y: 12}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 6, y: 12}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 6, y: 11}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 6, y: 11}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 6, y: 11}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 6, y: 12}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 6, y: 13}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
   key2InInventory: 0, name: agent, x: 6, y: 14}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
@@ -126,31 +285,83 @@ stateSequence:
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
   key2InInventory: 0, name: agent, x: 13, y: 11}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
-  key2InInventory: 0, name: agent, x: 12, y: 11}
+  key2InInventory: 0, name: agent, x: 13, y: 12}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
-  key2InInventory: 0, name: agent, x: 11, y: 11}
+  key2InInventory: 0, name: agent, x: 13, y: 11}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 13, y: 10}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 12, y: 10}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 11, y: 10}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 11, y: 9}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 12, y: 9}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 11, y: 9}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 11, y: 10}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 12, y: 10}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
   key2InInventory: 0, name: agent, x: 11, y: 10}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
   key2InInventory: 0, name: agent, x: 10, y: 10}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
-  key2InInventory: 0, name: agent, x: 9, y: 10}
+  key2InInventory: 0, name: agent, x: 11, y: 10}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 12, y: 10}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 13, y: 10}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 13, y: 9}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 12, y: 9}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 11, y: 9}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 11, y: 9}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 10, y: 9}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 10, y: 9}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 0,
+  key2InInventory: 0, name: agent, x: 9, y: 9}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 0, name: agent, x: 8, y: 9}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 0, name: agent, x: 8, y: 9}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 0, name: agent, x: 9, y: 9}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 0, name: agent, x: 8, y: 9}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 0, name: agent, x: 9, y: 9}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
-  key2InInventory: 0, name: agent, x: 9, y: 10}
+  key2InInventory: 0, name: agent, x: 9, y: 9}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
-  key2InInventory: 0, name: agent, x: 10, y: 10}
+  key2InInventory: 0, name: agent, x: 10, y: 9}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 0, name: agent, x: 11, y: 9}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 0, name: agent, x: 11, y: 10}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 0, name: agent, x: 11, y: 11}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 0, name: agent, x: 12, y: 11}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 0, name: agent, x: 12, y: 11}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 0, name: agent, x: 13, y: 11}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 0, name: agent, x: 13, y: 10}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 0, name: agent, x: 13, y: 10}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 0, name: agent, x: 13, y: 9}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 0, name: agent, x: 13, y: 10}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 0, name: agent, x: 13, y: 11}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
@@ -162,35 +373,85 @@ stateSequence:
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 0, name: agent, x: 13, y: 15}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 0, name: agent, x: 13, y: 15}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 0, name: agent, x: 13, y: 16}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
-  key2InInventory: 0, name: agent, x: 12, y: 16}
+  key2InInventory: 0, name: agent, x: 13, y: 15}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
-  key2InInventory: 0, name: agent, x: 11, y: 16}
+  key2InInventory: 0, name: agent, x: 13, y: 15}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
-  key2InInventory: 0, name: agent, x: 10, y: 16}
+  key2InInventory: 0, name: agent, x: 13, y: 14}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
-  key2InInventory: 0, name: agent, x: 9, y: 16}
+  key2InInventory: 0, name: agent, x: 13, y: 15}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 0, name: agent, x: 12, y: 15}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 0, name: agent, x: 11, y: 15}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 0, name: agent, x: 11, y: 15}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 0, name: agent, x: 10, y: 15}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 0, name: agent, x: 9, y: 15}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 0, name: agent, x: 8, y: 15}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 0, name: agent, x: 8, y: 15}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 0, name: agent, x: 8, y: 15}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 0, name: agent, x: 9, y: 15}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 0, name: agent, x: 8, y: 15}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 1, name: agent, x: 8, y: 16}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
-  key2InInventory: 1, name: agent, x: 8, y: 15}
+  key2InInventory: 1, name: agent, x: 9, y: 16}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
-  key2InInventory: 1, name: agent, x: 9, y: 15}
+  key2InInventory: 1, name: agent, x: 8, y: 16}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
-  key2InInventory: 1, name: agent, x: 10, y: 15}
+  key2InInventory: 1, name: agent, x: 9, y: 16}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
-  key2InInventory: 1, name: agent, x: 11, y: 15}
+  key2InInventory: 1, name: agent, x: 10, y: 16}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 11, y: 16}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 12, y: 16}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 1, name: agent, x: 12, y: 15}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 12, y: 16}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 13, y: 16}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 13, y: 16}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 13, y: 16}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 1, name: agent, x: 13, y: 15}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 13, y: 14}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 1, name: agent, x: 13, y: 14}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 1, name: agent, x: 13, y: 13}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 1, name: agent, x: 12, y: 13}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 12, y: 13}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 12, y: 13}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 11, y: 13}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 12, y: 13}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 11, y: 13}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 10, y: 13}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 10, y: 13}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 1, name: agent, x: 11, y: 13}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
@@ -202,9 +463,13 @@ stateSequence:
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 1, name: agent, x: 7, y: 13}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 7, y: 13}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 1, name: agent, x: 6, y: 13}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 1, name: agent, x: 6, y: 12}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 6, y: 11}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 1, name: agent, x: 6, y: 11}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
@@ -212,10 +477,40 @@ stateSequence:
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 1, name: agent, x: 4, y: 11}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
-  key2InInventory: 1, name: agent, x: 3, y: 11}
+  key2InInventory: 1, name: agent, x: 5, y: 11}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 6, y: 11}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 6, y: 10}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 6, y: 10}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 5, y: 10}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 5, y: 11}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 5, y: 10}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 4, y: 10}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
   key2InInventory: 1, name: agent, x: 3, y: 10}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 3, y: 9}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 4, y: 9}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 0, door2Open: 0, key1InInventory: 1,
+  key2InInventory: 1, name: agent, x: 3, y: 9}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
+  key2InInventory: 1, name: agent, x: 3, y: 8}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
+  key2InInventory: 1, name: agent, x: 3, y: 9}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
+  key2InInventory: 1, name: agent, x: 3, y: 10}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
+  key2InInventory: 1, name: agent, x: 4, y: 10}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
+  key2InInventory: 1, name: agent, x: 4, y: 9}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
   key2InInventory: 1, name: agent, x: 3, y: 9}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
   key2InInventory: 1, name: agent, x: 3, y: 8}
@@ -224,13 +519,45 @@ stateSequence:
 - !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
   key2InInventory: 1, name: agent, x: 4, y: 7}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
-  key2InInventory: 1, name: agent, x: 4, y: 6}
+  key2InInventory: 1, name: agent, x: 3, y: 7}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
+  key2InInventory: 1, name: agent, x: 2, y: 7}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
+  key2InInventory: 1, name: agent, x: 3, y: 7}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
+  key2InInventory: 1, name: agent, x: 4, y: 7}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
+  key2InInventory: 1, name: agent, x: 5, y: 7}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
+  key2InInventory: 1, name: agent, x: 4, y: 7}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
+  key2InInventory: 1, name: agent, x: 4, y: 7}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
+  key2InInventory: 1, name: agent, x: 4, y: 7}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
+  key2InInventory: 1, name: agent, x: 5, y: 7}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
+  key2InInventory: 1, name: agent, x: 4, y: 7}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
+  key2InInventory: 1, name: agent, x: 5, y: 7}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
   key2InInventory: 1, name: agent, x: 5, y: 6}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
-  key2InInventory: 1, name: agent, x: 6, y: 6}
+  key2InInventory: 1, name: agent, x: 5, y: 5}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
   key2InInventory: 1, name: agent, x: 6, y: 5}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
+  key2InInventory: 1, name: agent, x: 5, y: 5}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
+  key2InInventory: 1, name: agent, x: 5, y: 6}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
+  key2InInventory: 1, name: agent, x: 5, y: 7}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
+  key2InInventory: 1, name: agent, x: 5, y: 6}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
+  key2InInventory: 1, name: agent, x: 5, y: 5}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
+  key2InInventory: 1, name: agent, x: 5, y: 4}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 0, key1InInventory: -1,
   key2InInventory: 1, name: agent, x: 6, y: 4}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
@@ -238,17 +565,51 @@ stateSequence:
 - !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
   key2InInventory: -1, name: agent, x: 8, y: 4}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
+  key2InInventory: -1, name: agent, x: 9, y: 4}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
+  key2InInventory: -1, name: agent, x: 8, y: 4}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
   key2InInventory: -1, name: agent, x: 8, y: 3}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
   key2InInventory: -1, name: agent, x: 8, y: 2}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
-  key2InInventory: -1, name: agent, x: 8, y: 1}
+  key2InInventory: -1, name: agent, x: 8, y: 3}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
-  key2InInventory: -1, name: agent, x: 9, y: 1}
+  key2InInventory: -1, name: agent, x: 8, y: 4}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
-  key2InInventory: -1, name: agent, x: 10, y: 1}
+  key2InInventory: -1, name: agent, x: 9, y: 4}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
+  key2InInventory: -1, name: agent, x: 10, y: 4}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
+  key2InInventory: -1, name: agent, x: 9, y: 4}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
+  key2InInventory: -1, name: agent, x: 10, y: 4}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
+  key2InInventory: -1, name: agent, x: 10, y: 3}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
+  key2InInventory: -1, name: agent, x: 10, y: 2}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
+  key2InInventory: -1, name: agent, x: 11, y: 2}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
   key2InInventory: -1, name: agent, x: 11, y: 1}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
+  key2InInventory: -1, name: agent, x: 11, y: 1}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
+  key2InInventory: -1, name: agent, x: 12, y: 1}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
+  key2InInventory: -1, name: agent, x: 12, y: 2}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
+  key2InInventory: -1, name: agent, x: 11, y: 2}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
+  key2InInventory: -1, name: agent, x: 11, y: 3}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
+  key2InInventory: -1, name: agent, x: 12, y: 3}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
+  key2InInventory: -1, name: agent, x: 12, y: 2}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
+  key2InInventory: -1, name: agent, x: 12, y: 1}
+- !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
+  key2InInventory: -1, name: agent, x: 12, y: 2}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
   key2InInventory: -1, name: agent, x: 12, y: 1}
 - !!edu.cbohan3.SimpleWorldState {door1Open: 1, door2Open: 1, key1InInventory: -1,
