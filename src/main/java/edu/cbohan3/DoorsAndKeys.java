@@ -9,8 +9,8 @@ import burlap.mdp.singleagent.oo.OOSADomain;
 import burlap.visualizer.StateRenderLayer;
 import burlap.visualizer.Visualizer;
 
-public class SimpleWorld implements DomainGenerator {
-	public static final double SUCCESS_CHANCE = .5;
+public class DoorsAndKeys implements DomainGenerator {
+	public static final double SUCCESS_CHANCE = .75;
 	
 	public static final String VAR_X = "x";
 	public static final String VAR_Y = "y";
@@ -66,11 +66,11 @@ public class SimpleWorld implements DomainGenerator {
 	public OOSADomain generateDomain() {
 		OOSADomain domain = new OOSADomain();
 		
-		domain.addStateClass(CLASS_AGENT, SimpleWorldState.class);
+		domain.addStateClass(CLASS_AGENT, DoorsAndKeysState.class);
 		
-		SimpleWorldStateModel sModel = new SimpleWorldStateModel(SUCCESS_CHANCE);
-		RewardFunction rf = new SimpleWorldRewardFunction(SimpleWorld.goalX, SimpleWorld.goalY);
-		TerminalFunction tf = new SimpleWorldTerminalFunction(SimpleWorld.goalX, SimpleWorld.goalY);
+		DoorsAndKeysStateModel sModel = new DoorsAndKeysStateModel(SUCCESS_CHANCE);
+		RewardFunction rf = new DoorsAndKeysRewardFunction(DoorsAndKeys.goalX, DoorsAndKeys.goalY);
+		TerminalFunction tf = new DoorsAndKeysTerminalFunction(DoorsAndKeys.goalX, DoorsAndKeys.goalY);
 		
 		FactoredModel model = new FactoredModel(sModel, rf, tf);
 		domain.setModel(model);
@@ -85,13 +85,13 @@ public class SimpleWorld implements DomainGenerator {
 	}
 	
 	public void setGoalLocation(int goalX, int goalY) {
-		SimpleWorld.goalX = goalX;
-		SimpleWorld.goalY = goalY;
+		DoorsAndKeys.goalX = goalX;
+		DoorsAndKeys.goalY = goalY;
 	}
 	
 	public StateRenderLayer getStateRenderLayer() {
 		StateRenderLayer rl = new StateRenderLayer();
-		rl.addStatePainter(new SimpleWorldVisualizer());
+		rl.addStatePainter(new DoorsAndKeysVisualizer());
 		return rl;
 	}
 	
@@ -99,8 +99,8 @@ public class SimpleWorld implements DomainGenerator {
 		return new Visualizer(this.getStateRenderLayer());
 	}
 	
-	public SimpleWorldState getInitialState() {
-		return new SimpleWorldState(startX, startY, 0, 0, 0, 0);
+	public DoorsAndKeysState getInitialState() {
+		return new DoorsAndKeysState(startX, startY, 0, 0, 0, 0);
 	}
 	
 	public static int[] getObjectPosition(int object) {

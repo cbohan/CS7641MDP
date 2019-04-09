@@ -8,11 +8,11 @@ import burlap.mdp.core.action.Action;
 import burlap.mdp.core.state.State;
 import burlap.mdp.singleagent.model.statemodel.FullStateModel;
 
-public class SimpleWorldStateModel implements FullStateModel {
+public class DoorsAndKeysStateModel implements FullStateModel {
 	protected double [][] transitionProbs;
 	protected double successChance;
 	
-	public SimpleWorldStateModel(double successChance) {
+	public DoorsAndKeysStateModel(double successChance) {
 		this.successChance = successChance;
 		this.transitionProbs = new double[4][4];
 		for (int i = 0; i < 4; i++)
@@ -22,13 +22,13 @@ public class SimpleWorldStateModel implements FullStateModel {
 	
 	protected int actionDir(Action a) {
 		int adir = -1;
-		if (a.actionName().equals(SimpleWorld.ACTION_NORTH)) {
+		if (a.actionName().equals(DoorsAndKeys.ACTION_NORTH)) {
 			adir = 0;
-		} else if (a.actionName().equals(SimpleWorld.ACTION_EAST)) {
+		} else if (a.actionName().equals(DoorsAndKeys.ACTION_EAST)) {
 			adir = 1;
-		} else if (a.actionName().equals(SimpleWorld.ACTION_SOUTH)) {
+		} else if (a.actionName().equals(DoorsAndKeys.ACTION_SOUTH)) {
 			adir = 2;
-		} else if (a.actionName().equals(SimpleWorld.ACTION_WEST)) {
+		} else if (a.actionName().equals(DoorsAndKeys.ACTION_WEST)) {
 			adir = 3;
 		}
 		
@@ -52,32 +52,32 @@ public class SimpleWorldStateModel implements FullStateModel {
 		//System.out.println(hasKey(key1InInventory, key2InInventory));
 		
 		//Walk into wall.
-		if (SimpleWorld.map[nextY][nextX] == 1) 
+		if (DoorsAndKeys.map[nextY][nextX] == 1) 
 			return new int[] { curX, curY, key1InInventory, key2InInventory, door1Open, door2Open };
 		
 		//Walk into door with no key and door is closed.
-		if (SimpleWorld.map[nextY][nextX] == SimpleWorld.D1 && door1Open == 0 && (hasKey(key1InInventory, key2InInventory) == false))
+		if (DoorsAndKeys.map[nextY][nextX] == DoorsAndKeys.D1 && door1Open == 0 && (hasKey(key1InInventory, key2InInventory) == false))
 			return new int[] { curX, curY, key1InInventory, key2InInventory, door1Open, door2Open };	
-		if (SimpleWorld.map[nextY][nextX] == SimpleWorld.D2 && door2Open == 0 && (hasKey(key1InInventory, key2InInventory) == false))
+		if (DoorsAndKeys.map[nextY][nextX] == DoorsAndKeys.D2 && door2Open == 0 && (hasKey(key1InInventory, key2InInventory) == false))
 			return new int[] { curX, curY, key1InInventory, key2InInventory, door1Open, door2Open };	
 		
 		//Walk into door with key.
-		if (SimpleWorld.map[nextY][nextX] == SimpleWorld.D1 && door1Open == 0 && key1InInventory == 1)
+		if (DoorsAndKeys.map[nextY][nextX] == DoorsAndKeys.D1 && door1Open == 0 && key1InInventory == 1)
 			return new int[] { nextX, nextY, -1, key2InInventory, 1, door2Open };
-		else if (SimpleWorld.map[nextY][nextX] == SimpleWorld.D1 && door1Open == 0 && key2InInventory == 1)
+		else if (DoorsAndKeys.map[nextY][nextX] == DoorsAndKeys.D1 && door1Open == 0 && key2InInventory == 1)
 			return new int[] { nextX, nextY, key1InInventory, -1, 1, door2Open };
-		if (SimpleWorld.map[nextY][nextX] == SimpleWorld.D2  && door2Open == 0&& key1InInventory == 1)
+		if (DoorsAndKeys.map[nextY][nextX] == DoorsAndKeys.D2  && door2Open == 0&& key1InInventory == 1)
 			return new int[] { nextX, nextY, -1, key2InInventory, door1Open, 1 };
-		else if (SimpleWorld.map[nextY][nextX] == SimpleWorld.D2 && door2Open == 0 && key2InInventory == 1) 
+		else if (DoorsAndKeys.map[nextY][nextX] == DoorsAndKeys.D2 && door2Open == 0 && key2InInventory == 1) 
 			return new int[] { nextX, nextY, key1InInventory, -1, door1Open, 1 };
 		
 		//Walk into key.
-		if (SimpleWorld.map[nextY][nextX] == SimpleWorld.K1) {
+		if (DoorsAndKeys.map[nextY][nextX] == DoorsAndKeys.K1) {
 			if (key1InInventory == 0)
 				return new int[] { nextX, nextY, 1, key2InInventory, door1Open, door2Open };
 			else
 				return new int[] { nextX, nextY, key1InInventory, key2InInventory, door1Open, door2Open };
-		} else if (SimpleWorld.map[nextY][nextX] == SimpleWorld.K2) {
+		} else if (DoorsAndKeys.map[nextY][nextX] == DoorsAndKeys.K2) {
 			if (key2InInventory == 0)
 				return new int[] { nextX, nextY, key1InInventory, 1, door1Open, door2Open };
 			else
@@ -94,7 +94,7 @@ public class SimpleWorldStateModel implements FullStateModel {
 	
 	public State sample(State s, Action a) {
 		s = s.copy();
-		SimpleWorldState sws = (SimpleWorldState)s;
+		DoorsAndKeysState sws = (DoorsAndKeysState)s;
 		
 		int adir = actionDir(a);
 		
@@ -126,7 +126,7 @@ public class SimpleWorldStateModel implements FullStateModel {
 
 	public List<StateTransitionProb> stateTransitions(State s, Action a) {
 		//Get the current state.
-		SimpleWorldState sws = (SimpleWorldState)s;
+		DoorsAndKeysState sws = (DoorsAndKeysState)s;
 		
 		int adir = actionDir(a);
 		
@@ -140,7 +140,7 @@ public class SimpleWorldStateModel implements FullStateModel {
 			newState[3] != sws.key2InInventory || newState[4] != sws.door1Open || 
 			newState[5] != sws.door2Open) {
 				//New possible outcome.
-				SimpleWorldState newSws = sws.copy();
+				DoorsAndKeysState newSws = sws.copy();
 				newSws.x = newState[0];
 				newSws.y = newState[1];
 				newSws.key1InInventory = newState[2];

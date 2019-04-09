@@ -36,8 +36,8 @@ import burlap.statehashing.HashableStateFactory;
 import burlap.statehashing.simple.SimpleHashableStateFactory;
 import burlap.visualizer.Visualizer;
 
-public class SimpleWorldBehavior {
-	public SimpleWorld simpleWorld;
+public class DoorsAndKeysBehavior {
+	public DoorsAndKeys doorsAndKeysWorld;
 	public OOSADomain domain;
 	public RewardFunction rf;
 	public TerminalFunction tf;
@@ -46,20 +46,20 @@ public class SimpleWorldBehavior {
 	public HashableStateFactory hashingFactory;
 	public SimulatedEnvironment env;
 	
-	public SimpleWorldBehavior() {
-		simpleWorld = new SimpleWorld();
-		tf = new SimpleWorldTerminalFunction(SimpleWorld.goalX, SimpleWorld.goalY);
-		rf = new SimpleWorldRewardFunction(SimpleWorld.goalX, SimpleWorld.goalY);
+	public DoorsAndKeysBehavior() {
+		doorsAndKeysWorld = new DoorsAndKeys();
+		tf = new DoorsAndKeysTerminalFunction(DoorsAndKeys.goalX, DoorsAndKeys.goalY);
+		rf = new DoorsAndKeysRewardFunction(DoorsAndKeys.goalX, DoorsAndKeys.goalY);
 		goalCondition = new TFGoalCondition(tf);
-		domain = simpleWorld.generateDomain();
-		initialState = simpleWorld.getInitialState();
+		domain = doorsAndKeysWorld.generateDomain();
+		initialState = doorsAndKeysWorld.getInitialState();
 		hashingFactory = new SimpleHashableStateFactory();
 		env = new SimulatedEnvironment(domain, initialState);
 		
 	}
 	
 	public void visualize(String outputPath) {
-		Visualizer v = simpleWorld.getVisualizer();
+		Visualizer v = doorsAndKeysWorld.getVisualizer();
 		new EpisodeSequenceVisualizer(v, domain, outputPath);
 	}
 
@@ -87,18 +87,25 @@ public class SimpleWorldBehavior {
 	}
 	
 	public void doPolicyIteration(String outputPath) {
-		Planner planner = new PolicyIteration(domain, 0.99, hashingFactory, 0.001, 100, 100);
+		long startTime = System.nanoTime();
+		
+		Planner planner = new PolicyIteration(domain, 0.99, hashingFactory, 0.001, 200, 200);
 		Policy p = planner.planFromState(initialState);
 		PolicyUtils.rollout(p, initialState, domain.getModel()).write(outputPath + "pi");
+		valueFunctionVis((ValueFunction)planner, p);
+		
+		long endTime = System.nanoTime();
+		double duration = (endTime - startTime) / 1000000000.;
+		System.out.println("Value iteration took: " + duration + " seconds.");
 	}
 	
 	public void doAStar(String outputPath) {
 		try {
 			Heuristic distanceHeuristic = new Heuristic() {
 				public double h(State s) {
-					SimpleWorldState sws = (SimpleWorldState)s;
-					double distanceXGoal = Math.abs(SimpleWorld.goalX - sws.x);
-					double distanceYGoal = Math.abs(SimpleWorld.goalY - sws.y);
+					DoorsAndKeysState sws = (DoorsAndKeysState)s;
+					double distanceXGoal = Math.abs(DoorsAndKeys.goalX - sws.x);
+					double distanceYGoal = Math.abs(DoorsAndKeys.goalY - sws.y);
 					
 					double heuristic = -(distanceXGoal + distanceYGoal);					
 					return heuristic;
@@ -116,12 +123,12 @@ public class SimpleWorldBehavior {
 	public void valueFunctionVis(ValueFunction valueFunction, Policy p) {
 		List<State> allStates = StateReachability.getReachableStates(initialState, domain, hashingFactory);
 		
-		Integer hasKey1 = 0;
-		Integer hasKey2 = 1;
+		Integer hasKey1 = -1;
+		Integer hasKey2 = -1;
 		List<State> someStates = new ArrayList<State>();
 		for (State s : allStates) {
-			if (s.get((String)SimpleWorld.VAR_KEY1_IN_INVENTORY) == hasKey1 &&
-			s.get((String)SimpleWorld.VAR_KEY2_IN_INVENTORY) == hasKey2) {
+			if (s.get((String)DoorsAndKeys.VAR_KEY1_IN_INVENTORY) == hasKey1 &&
+			s.get((String)DoorsAndKeys.VAR_KEY2_IN_INVENTORY) == hasKey2) {
 				someStates.add(s);
 			}
 		}
@@ -132,24 +139,23 @@ public class SimpleWorldBehavior {
 		
 		StateValuePainter2D svp = new StateValuePainter2D(rb);
 		svp.setXYKeys("x", "y", new VariableDomain(0, 15), new VariableDomain(0, 18), 1, 1);
-	
-		ValueFunctionVisualizerGUI gui = new ValueFunctionVisualizerGUI(someStates, svp, valueFunction);
-		
+				
 		PolicyGlyphPainter2D spp = new PolicyGlyphPainter2D();
 		spp.setXYKeys("x", "y", new VariableDomain(0, 15), new VariableDomain(0, 18), 1, 1);
 		
-		spp.setActionNameGlyphPainter(SimpleWorld.ACTION_NORTH, new ArrowActionGlyph(1));
-		spp.setActionNameGlyphPainter(SimpleWorld.ACTION_SOUTH, new ArrowActionGlyph(0));
-		spp.setActionNameGlyphPainter(SimpleWorld.ACTION_EAST, new ArrowActionGlyph(2));
-		spp.setActionNameGlyphPainter(SimpleWorld.ACTION_WEST, new ArrowActionGlyph(3));
+		spp.setActionNameGlyphPainter(DoorsAndKeys.ACTION_NORTH, new ArrowActionGlyph(1));
+		spp.setActionNameGlyphPainter(DoorsAndKeys.ACTION_SOUTH, new ArrowActionGlyph(0));
+		spp.setActionNameGlyphPainter(DoorsAndKeys.ACTION_EAST, new ArrowActionGlyph(2));
+		spp.setActionNameGlyphPainter(DoorsAndKeys.ACTION_WEST, new ArrowActionGlyph(3));
 		spp.setRenderStyle(PolicyGlyphPainter2D.PolicyGlyphRenderStyle.DISTSCALED);
 		
-		gui.setSpp(spp);
-		gui.setPolicy(p);
-		
-		gui.setBgColor(Color.GRAY);
-		
-		gui.initGUI();
+		if (valueFunction != null) {
+			ValueFunctionVisualizerGUI gui = new ValueFunctionVisualizerGUI(someStates, svp, valueFunction);
+			gui.setSpp(spp);
+			gui.setPolicy(p);
+			gui.setBgColor(Color.GRAY);
+			gui.initGUI();
+		}
 	}
 	
 	public void experimentAndPlotter() {
