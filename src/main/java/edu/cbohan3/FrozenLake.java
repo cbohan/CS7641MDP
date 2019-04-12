@@ -10,7 +10,7 @@ import burlap.visualizer.StateRenderLayer;
 import burlap.visualizer.Visualizer;
 
 public class FrozenLake implements DomainGenerator {
-	public static final double SUCCESS_CHANCE = 1;
+	public static final double SUCCESS_CHANCE = .7;
 	
 	public static final String VAR_X = "x";
 	public static final String VAR_Y = "y";
@@ -30,10 +30,10 @@ public class FrozenLake implements DomainGenerator {
 		{XX,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,XX},
 		{XX,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,XX},
 		{XX,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,XX},
-		{XX,oo,HH,oo,oo,HH,oo,oo,oo,HH,HH,XX},
+		{XX,HH,oo,HH,oo,oo,HH,oo,oo,oo,HH,XX},
 		{XX,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,XX},
 		{XX,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,XX},
-		{XX,oo,HH,oo,oo,HH,oo,oo,oo,HH,HH,XX},
+		{XX,HH,oo,HH,oo,oo,HH,oo,oo,oo,HH,XX},
 		{XX,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,XX},
 		{XX,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,XX},
 		{XX,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,XX},

@@ -22,17 +22,15 @@ import burlap.mdp.auxiliary.stateconditiontest.TFGoalCondition;
 import burlap.mdp.core.TerminalFunction;
 import burlap.mdp.core.state.State;
 import burlap.mdp.core.state.vardomain.VariableDomain;
-import burlap.mdp.singleagent.common.GoalBasedRF;
 import burlap.mdp.singleagent.environment.SimulatedEnvironment;
-import burlap.mdp.singleagent.model.FactoredModel;
 import burlap.mdp.singleagent.model.RewardFunction;
 import burlap.mdp.singleagent.oo.OOSADomain;
 import burlap.statehashing.HashableStateFactory;
 import burlap.statehashing.simple.SimpleHashableStateFactory;
 import burlap.visualizer.Visualizer;
 
-public class DoorsAndKeysBehavior {
-	public DoorsAndKeys doorsAndKeysWorld;
+public class FrozenLakeBehavior {
+	public FrozenLake frozenLakeWorld;
 	public OOSADomain domain;
 	public RewardFunction rf;
 	public TerminalFunction tf;
@@ -41,20 +39,20 @@ public class DoorsAndKeysBehavior {
 	public HashableStateFactory hashingFactory;
 	public SimulatedEnvironment env;
 	
-	public DoorsAndKeysBehavior() {
-		doorsAndKeysWorld = new DoorsAndKeys();
-		tf = new DoorsAndKeysTerminalFunction(DoorsAndKeys.goalX, DoorsAndKeys.goalY);
-		rf = new DoorsAndKeysRewardFunction(DoorsAndKeys.goalX, DoorsAndKeys.goalY);
+	public FrozenLakeBehavior() {
+		frozenLakeWorld = new FrozenLake();
+		tf = new FrozenLakeTerminalFunction(FrozenLake.goalX, FrozenLake.goalY);
+		rf = new FrozenLakeRewardFunction(FrozenLake.goalX, FrozenLake.goalY);
 		goalCondition = new TFGoalCondition(tf);
-		domain = doorsAndKeysWorld.generateDomain();
-		initialState = doorsAndKeysWorld.getInitialState();
+		domain = frozenLakeWorld.generateDomain();
+		initialState = frozenLakeWorld.getInitialState();
 		hashingFactory = new SimpleHashableStateFactory();
 		env = new SimulatedEnvironment(domain, initialState);
 		
 	}
 	
 	public void visualize(String outputPath) {
-		Visualizer v = doorsAndKeysWorld.getVisualizer();
+		Visualizer v = frozenLakeWorld.getVisualizer();
 		new EpisodeSequenceVisualizer(v, domain, outputPath);
 	}
 	
@@ -63,7 +61,7 @@ public class DoorsAndKeysBehavior {
 		
 		Planner planner = new ValueIteration(domain, 0.99, hashingFactory, 0.001, 200);
 		Policy p = planner.planFromState(initialState);
-		PolicyUtils.rollout(p, initialState, domain.getModel()).write(outputPath + "doors_and_keys_vi");
+		PolicyUtils.rollout(p, initialState, domain.getModel()).write(outputPath + "frozen_lake_vi");
 		valueFunctionVis((ValueFunction)planner, p);
 		
 		long endTime = System.nanoTime();
@@ -76,7 +74,7 @@ public class DoorsAndKeysBehavior {
 		
 		Planner planner = new PolicyIteration(domain, 0.99, hashingFactory, 0.001, 200, 200);
 		Policy p = planner.planFromState(initialState);
-		PolicyUtils.rollout(p, initialState, domain.getModel()).write(outputPath + "doors_and_keys_pi");
+		PolicyUtils.rollout(p, initialState, domain.getModel()).write(outputPath + "frozen_lake_pi");
 		valueFunctionVis((ValueFunction)planner, p);
 		
 		long endTime = System.nanoTime();
@@ -86,16 +84,6 @@ public class DoorsAndKeysBehavior {
 	
 	public void valueFunctionVis(ValueFunction valueFunction, Policy p) {
 		List<State> allStates = StateReachability.getReachableStates(initialState, domain, hashingFactory);
-		
-		Integer hasKey1 = -1;
-		Integer hasKey2 = -1;
-		List<State> someStates = new ArrayList<State>();
-		for (State s : allStates) {
-			if (s.get((String)DoorsAndKeys.VAR_KEY1_IN_INVENTORY) == hasKey1 &&
-			s.get((String)DoorsAndKeys.VAR_KEY2_IN_INVENTORY) == hasKey2) {
-				someStates.add(s);
-			}
-		}
 		
 		LandmarkColorBlendInterpolation rb = new LandmarkColorBlendInterpolation();
 		rb.addNextLandMark(0., Color.RED);
@@ -107,14 +95,14 @@ public class DoorsAndKeysBehavior {
 		PolicyGlyphPainter2D spp = new PolicyGlyphPainter2D();
 		spp.setXYKeys("x", "y", new VariableDomain(0, 15), new VariableDomain(0, 18), 1, 1);
 		
-		spp.setActionNameGlyphPainter(DoorsAndKeys.ACTION_NORTH, new ArrowActionGlyph(1));
-		spp.setActionNameGlyphPainter(DoorsAndKeys.ACTION_SOUTH, new ArrowActionGlyph(0));
-		spp.setActionNameGlyphPainter(DoorsAndKeys.ACTION_EAST, new ArrowActionGlyph(2));
-		spp.setActionNameGlyphPainter(DoorsAndKeys.ACTION_WEST, new ArrowActionGlyph(3));
+		spp.setActionNameGlyphPainter(FrozenLake.ACTION_NORTH, new ArrowActionGlyph(1));
+		spp.setActionNameGlyphPainter(FrozenLake.ACTION_SOUTH, new ArrowActionGlyph(0));
+		spp.setActionNameGlyphPainter(FrozenLake.ACTION_EAST, new ArrowActionGlyph(2));
+		spp.setActionNameGlyphPainter(FrozenLake.ACTION_WEST, new ArrowActionGlyph(3));
 		spp.setRenderStyle(PolicyGlyphPainter2D.PolicyGlyphRenderStyle.DISTSCALED);
 		
 		if (valueFunction != null) {
-			ValueFunctionVisualizerGUI gui = new ValueFunctionVisualizerGUI(someStates, svp, valueFunction);
+			ValueFunctionVisualizerGUI gui = new ValueFunctionVisualizerGUI(allStates, svp, valueFunction);
 			gui.setSpp(spp);
 			gui.setPolicy(p);
 			gui.setBgColor(Color.GRAY);

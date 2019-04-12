@@ -1,7 +1,6 @@
 package edu.cbohan3;
 
 import burlap.mdp.core.state.State;
-import burlap.mdp.singleagent.SADomain;
 import burlap.mdp.singleagent.common.VisualActionObserver;
 import burlap.mdp.singleagent.environment.SimulatedEnvironment;
 import burlap.mdp.singleagent.oo.OOSADomain;
@@ -13,19 +12,34 @@ public class Main {
 		//playDoorsAndKeys();
 		playFrozenLake();
 		
-		//DoorsAndKeysBehavior behavior = new DoorsAndKeysBehavior();
+		//solveDoorsAndKeys();
+		//solveFrozenLake();
+	}
+	
+	private static void solveFrozenLake() {
+		FrozenLakeBehavior behavior = new FrozenLakeBehavior();
 		String outputPath = "output/";
 		
-		/*VisualActionObserver observer = new VisualActionObserver(behavior.simpleWorld.getVisualizer());
+		VisualActionObserver observer = new VisualActionObserver(behavior.frozenLakeWorld.getVisualizer());
 		observer.initGUI();
-		behavior.env.addObservers(observer);*/
+		behavior.env.addObservers(observer);
+
+		behavior.doValueIteration(outputPath);
+		behavior.doPolicyIteration(outputPath);
+		behavior.visualize(outputPath);
+	}
+	
+	private static void solveDoorsAndKeys() {
+		DoorsAndKeysBehavior behavior = new DoorsAndKeysBehavior();
+		String outputPath = "output/";
 		
-		//behavior.doBFS(outputPath);
-		//behavior.doAStar(outputPath);
-		//behavior.doValueIteration(outputPath);
-		//behavior.doPolicyIteration(outputPath);
-		//behavior.visualize(outputPath);
-		
+		VisualActionObserver observer = new VisualActionObserver(behavior.doorsAndKeysWorld.getVisualizer());
+		observer.initGUI();
+		behavior.env.addObservers(observer);
+
+		behavior.doValueIteration(outputPath);
+		behavior.doPolicyIteration(outputPath);
+		behavior.visualize(outputPath);
 	}
 	
 	private static void playDoorsAndKeys() {
