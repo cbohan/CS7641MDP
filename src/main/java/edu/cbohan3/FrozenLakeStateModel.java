@@ -2,6 +2,7 @@ package edu.cbohan3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import burlap.mdp.core.StateTransitionProb;
 import burlap.mdp.core.action.Action;
@@ -11,6 +12,7 @@ import burlap.mdp.singleagent.model.statemodel.FullStateModel;
 public class FrozenLakeStateModel implements FullStateModel {
 	protected double [][] transitionProbs;
 	protected double successChance;
+	protected Random rand;
 	
 	public FrozenLakeStateModel(double successChance) {
 		this.successChance = successChance;
@@ -18,6 +20,7 @@ public class FrozenLakeStateModel implements FullStateModel {
 		for (int i = 0; i < 4; i++)
 			for (int j = 0; j < 4; j++)
 				this.transitionProbs[i][j] = (i == j) ? successChance : ((1. - successChance) / 3.); 
+		rand = new Random(System.currentTimeMillis());
 	} 
 	
 	protected int actionDir(Action a) {
@@ -62,7 +65,7 @@ public class FrozenLakeStateModel implements FullStateModel {
 		
 		int adir = actionDir(a);
 		
-		double r = Math.random();
+		double r = rand.nextDouble();
 		double sumProb = 0.;
 		int dir	= 0;
 		for (int i = 0; i < 4; i++) {

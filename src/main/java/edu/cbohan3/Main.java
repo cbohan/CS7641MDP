@@ -10,7 +10,7 @@ import burlap.visualizer.Visualizer;
 public class Main {
 	public static void main(String[] args) {
 		//playDoorsAndKeys();
-		playFrozenLake();
+		//playFrozenLake();
 		
 		//solveDoorsAndKeys();
 		//solveFrozenLake();
@@ -26,6 +26,7 @@ public class Main {
 
 		behavior.doValueIteration(outputPath);
 		behavior.doPolicyIteration(outputPath);
+		behavior.doQLearning(outputPath);
 		behavior.visualize(outputPath);
 	}
 	
@@ -39,6 +40,7 @@ public class Main {
 
 		behavior.doValueIteration(outputPath);
 		behavior.doPolicyIteration(outputPath);
+		behavior.doQLearning(outputPath);
 		behavior.visualize(outputPath);
 	}
 	

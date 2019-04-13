@@ -1,0 +1,28 @@
+!!burlap.behavior.singleagent.Episode
+actionSequence:
+- &id001 !!burlap.mdp.core.action.SimpleAction {name: east}
+- &id002 !!burlap.mdp.core.action.SimpleAction {name: north}
+- *id001
+- *id002
+- *id001
+- *id002
+- *id001
+- *id002
+- *id002
+- !!burlap.mdp.core.action.SimpleAction {name: west}
+- *id001
+rewardSequence: [-0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01,
+  -1.0]
+stateSequence:
+- !!edu.cbohan3.FrozenLakeState {name: agent, x: 1, y: 10}
+- !!edu.cbohan3.FrozenLakeState {name: agent, x: 2, y: 10}
+- !!edu.cbohan3.FrozenLakeState {name: agent, x: 2, y: 9}
+- !!edu.cbohan3.FrozenLakeState {name: agent, x: 3, y: 9}
+- !!edu.cbohan3.FrozenLakeState {name: agent, x: 3, y: 8}
+- !!edu.cbohan3.FrozenLakeState {name: agent, x: 4, y: 8}
+- !!edu.cbohan3.FrozenLakeState {name: agent, x: 4, y: 7}
+- !!edu.cbohan3.FrozenLakeState {name: agent, x: 5, y: 7}
+- !!edu.cbohan3.FrozenLakeState {name: agent, x: 5, y: 6}
+- !!edu.cbohan3.FrozenLakeState {name: agent, x: 5, y: 5}
+- !!edu.cbohan3.FrozenLakeState {name: agent, x: 5, y: 4}
+- !!edu.cbohan3.FrozenLakeState {name: agent, x: 6, y: 4}

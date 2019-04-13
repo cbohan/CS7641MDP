@@ -6,6 +6,7 @@ import java.util.List;
 
 import burlap.behavior.policy.Policy;
 import burlap.behavior.policy.PolicyUtils;
+import burlap.behavior.singleagent.Episode;
 import burlap.behavior.singleagent.auxiliary.EpisodeSequenceVisualizer;
 import burlap.behavior.singleagent.auxiliary.StateReachability;
 import burlap.behavior.singleagent.auxiliary.valuefunctionvis.ValueFunctionVisualizerGUI;
@@ -13,6 +14,8 @@ import burlap.behavior.singleagent.auxiliary.valuefunctionvis.common.ArrowAction
 import burlap.behavior.singleagent.auxiliary.valuefunctionvis.common.LandmarkColorBlendInterpolation;
 import burlap.behavior.singleagent.auxiliary.valuefunctionvis.common.PolicyGlyphPainter2D;
 import burlap.behavior.singleagent.auxiliary.valuefunctionvis.common.StateValuePainter2D;
+import burlap.behavior.singleagent.learning.LearningAgent;
+import burlap.behavior.singleagent.learning.tdmethods.QLearning;
 import burlap.behavior.singleagent.planning.Planner;
 import burlap.behavior.singleagent.planning.stochastic.policyiteration.PolicyIteration;
 import burlap.behavior.singleagent.planning.stochastic.valueiteration.ValueIteration;
@@ -80,6 +83,21 @@ public class FrozenLakeBehavior {
 		long endTime = System.nanoTime();
 		double duration = (endTime - startTime) / 1000000000.;
 		System.out.println("Value iteration took: " + duration + " seconds.");
+	}
+	
+	public void doQLearning(String outputPath) {
+		LearningAgent agent = new QLearning(domain, .99, hashingFactory, .5, .5);
+		
+		for (int i = 0; i <= 1000; i ++) {
+			Episode e = agent.runLearningEpisode(env);
+			
+			if (i % 100 == 0) {
+				e.write(outputPath + "frozen_lake_ql_" + i);
+				System.out.println(i + ": " + e.maxTimeStep());
+			}
+			
+			env.resetEnvironment();
+		}
 	}
 	
 	public void valueFunctionVis(ValueFunction valueFunction, Policy p) {
